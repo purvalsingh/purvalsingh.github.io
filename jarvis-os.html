@@ -219,6 +219,24 @@
     }
     .role-split .role-card h3 { margin-bottom: var(--space-sm); }
     .role-split .role-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+    .launch-btn {
+      display: inline-flex; align-items: center; gap: var(--space-sm);
+      margin-top: var(--space-xl); padding: var(--space-sm) var(--space-lg);
+      font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.05em;
+      color: var(--accent); text-decoration: none;
+      border: 1px solid var(--accent-glow); border-radius: var(--radius-full);
+      background: var(--accent-soft);
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+    .launch-btn:hover { background: var(--accent-glow); box-shadow: 0 0 30px var(--accent-glow); transform: translateY(-2px); }
+    .launch-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); animation: pulseDot 1.6s ease-in-out infinite; }
+    @keyframes pulseDot { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+    .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: var(--space-lg); }
+    .cap-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+    .cap-card h3 { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); font-size: 1rem; }
+    .cap-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.55; }
   </style>
 </head>
 <body>
@@ -235,6 +253,9 @@
       <p class="eyebrow">Multi-Agent Operating Environment</p>
       <h1>JARVIS OS</h1>
       <p>A natural-language interface where every AI — Claude Code, Antigravity, local models — becomes just another worker. Not a chatbot: an operating environment.</p>
+      <a href="jarvis-interface.html" class="launch-btn">
+        <span class="launch-dot"></span> Launch the JARVIS Interface
+      </a>
     </section>
 
     <!-- Vision map -->
@@ -372,9 +393,79 @@ Recent Events
 
     <div class="section-divider"></div>
 
+    <!-- Voice desktop automation -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">05</span> Full Voice Desktop Control</h2>
+      <p class="about-text">JARVIS doesn't just answer — it <em>acts</em>. Every voice command becomes real work on the desktop: opening apps, moving windows, running commands, filling forms, controlling the mouse and keyboard. Almost anything you can do, it can do.</p>
+      <div class="flow-list" style="margin-top:var(--space-md)">
+        <div class="step"><strong>“Open my trading terminal and pull up EUR/USD.”</strong> → Linux Agent launches → Browser Agent navigates</div>
+        <div class="step"><strong>“Clean up my downloads folder.”</strong> → Terminal Agent sorts &amp; archives files</div>
+        <div class="step"><strong>“Start a screen recording and open OBS.”</strong> → Linux Agent installs/configures/runs</div>
+      </div>
+      <div class="callout">Desktop control runs through OS automation APIs (input, windows, accessibility) with a permission gate — JARVIS asks before anything destructive or irreversible.</div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Agentic tasks: bookings & estimates -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">06</span> It Does Things For You</h2>
+      <p class="about-text">Beyond code — JARVIS handles real-world tasks end to end. It browses, compares, calculates, and prepares the action, confirming with you before committing anything that costs money.</p>
+      <div class="cap-grid">
+        <div class="cap-card"><h3>📅 Bookings</h3><p>“Book a table for two at 8pm.” The Browser Agent finds availability, fills the form, and confirms with you before booking.</p></div>
+        <div class="cap-card"><h3>🧮 Estimates</h3><p>“What would a weekend in Goa cost?” The Finance + Research agents gather prices and return an itemized estimate.</p></div>
+        <div class="cap-card"><h3>✈️ Errands</h3><p>Flights, hotels, appointments, orders — handled by agents that drive the browser and verify each step.</p></div>
+        <div class="cap-card"><h3>🛠️ It Builds</h3><p>“Make me a portfolio tracker.” Claude Code plans, writes, tests, and ships it — then reports back.</p></div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Remote / mobile -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">07</span> Remote &amp; Mobile</h2>
+      <p class="about-text">JARVIS lives on your desktop but answers from anywhere. Send a command from your phone and the desktop agents execute it — with full access to everything above.</p>
+      <div class="stack-flow">
+        <span class="stack-node">📱 Phone</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">Secure Tunnel / WSS</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">Brain (Desktop)</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">Agents</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">Voice / Push Reply</span>
+      </div>
+      <div class="flow-list" style="margin-top:var(--space-md)">
+        <div class="step"><strong>From the train:</strong> “Update all my repos and redeploy.” → Desktop pulls, rebuilds, tests → pushes you “Done.”</div>
+        <div class="step"><strong>From bed:</strong> “Give me the estimate for that trip.” → Finance Agent replies to your phone.</div>
+      </div>
+      <div class="callout">The same paired session, authenticated end to end — token-secured, so only your devices can reach your JARVIS.</div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Long-term memory -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">08</span> Never Runs Out of Context</h2>
+      <p class="about-text">You shouldn't have to re-explain yourself. The Memory Agent stores facts, preferences, and project state in a vector database and retrieves only what's relevant — so JARVIS always has the background without burning context.</p>
+      <div class="dashboard-mock">
+<span class="ok">MEMORY · RECALLED</span>
+  User prefers FastAPI · never Flask
+  Current project → PostgreSQL + pgvector
+  Trades on FundingPips · risk cap 1%
+  Timezone → IST · likes concise replies
+
+<span class="ok">RETRIEVAL</span>  semantic search over pgvector
+<span class="ok">SUMMARY</span>    old sessions compressed, not dropped</div>
+      <div class="callout">Relevant memories are injected per request; the rest stays in the store. Context stays small, JARVIS stays informed — no repeating yourself.</div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- Agent communication -->
     <section class="cv-section">
-      <h2 class="section-title"><span class="section-number">05</span> Agent Communication</h2>
+      <h2 class="section-title"><span class="section-number">09</span> Agent Communication</h2>
       <p class="about-text">The "planner → executor → verifier" pattern: separate reasoning, implementation, and validation.</p>
       <div class="flow-list">
         <div class="step"><strong>You:</strong> “Build me a weather app.”</div>
@@ -393,7 +484,7 @@ Recent Events
 
     <!-- UI + Voice -->
     <section class="cv-section">
-      <h2 class="section-title"><span class="section-number">06</span> UI &amp; Voice</h2>
+      <h2 class="section-title"><span class="section-number">10</span> UI &amp; Voice</h2>
       <p class="about-text">Think Iron Man. Agents on the left, conversation in the center, live tasks on the right, terminal at the bottom.</p>
       <div class="flow-list" style="margin-top:var(--space-md)">
         <div class="step"><strong>Hey Jarvis</strong> → Speech-to-text (Whisper) → Brain → Agents → Text-to-speech (Piper)</div>
@@ -405,7 +496,7 @@ Recent Events
 
     <!-- Structure + plugins -->
     <section class="cv-section">
-      <h2 class="section-title"><span class="section-number">07</span> Structure &amp; Plugins</h2>
+      <h2 class="section-title"><span class="section-number">11</span> Structure &amp; Plugins</h2>
       <p class="about-text">Everything is a plugin. New agent? Drop a folder. Done.</p>
       <div class="tree">jarvis-os/
 ├── frontend/
@@ -429,7 +520,7 @@ Recent Events
 
     <!-- Tech stack -->
     <section class="cv-section">
-      <h2 class="section-title"><span class="section-number">08</span> Tech Stack</h2>
+      <h2 class="section-title"><span class="section-number">12</span> Tech Stack</h2>
       <table class="stack-table">
         <thead><tr><th>Layer</th><th>Technology</th></tr></thead>
         <tbody>
@@ -447,6 +538,9 @@ Recent Events
           <tr><td>Local Models</td><td>Ollama</td></tr>
           <tr><td>Voice STT</td><td>Whisper</td></tr>
           <tr><td>Voice TTS</td><td>Piper</td></tr>
+          <tr><td>Desktop Control</td><td>OS input / accessibility APIs · PyAutoGUI</td></tr>
+          <tr><td>Remote Link</td><td>Secure WSS tunnel · token auth</td></tr>
+          <tr><td>Mobile</td><td>PWA / companion app → push</td></tr>
         </tbody>
       </table>
     </section>
@@ -455,7 +549,7 @@ Recent Events
 
     <!-- Claude Code + Antigravity -->
     <section class="cv-section">
-      <h2 class="section-title"><span class="section-number">09</span> Where Claude Code &amp; Antigravity Fit</h2>
+      <h2 class="section-title"><span class="section-number">13</span> Where Claude Code &amp; Antigravity Fit</h2>
       <p class="about-text">Rather than choosing one, use them for different responsibilities.</p>
       <div class="role-split">
         <div class="role-card">

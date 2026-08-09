@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JARVIS OS — Architecture</title>
+  <meta name="description" content="JARVIS OS — a multi-agent operating environment. Vision, architecture, core agents, and tech stack.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---------- JARVIS OS page-specific ---------- */
+    .jarvis-hero {
+      text-align: center;
+      padding: var(--space-3xl) 0 var(--space-2xl);
+    }
+    .jarvis-hero .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-accent);
+      margin-bottom: var(--space-md);
+    }
+    .jarvis-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, var(--text-primary), var(--text-secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .jarvis-hero p {
+      color: var(--text-secondary);
+      max-width: 46ch;
+      margin: var(--space-md) auto 0;
+      line-height: 1.6;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin: var(--space-lg) 0;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+    .back-link:hover { color: var(--text-primary); }
+
+    .ascii-map {
+      font-family: var(--font-mono);
+      font-size: clamp(0.55rem, 1.5vw, 0.8rem);
+      line-height: 1.5;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      overflow-x: auto;
+      white-space: pre;
+      margin: 0 auto;
+    }
+
+    .stack-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+      justify-content: center;
+      margin-top: var(--space-lg);
+    }
+    .stack-node {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-chip);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      color: var(--text-primary);
+    }
+    .stack-arrow { color: var(--text-tertiary); }
+
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+    .agent-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: border-color var(--duration-normal) var(--ease-out),
+                  transform var(--duration-normal) var(--ease-out);
+    }
+    .agent-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+    .agent-card h3 {
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+    .agent-card .agent-emoji { font-size: 1.25rem; }
+    .agent-card .agent-uses {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-md);
+    }
+    .agent-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .agent-card ul {
+      list-style: none;
+      margin-top: var(--space-sm);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-sm);
+    }
+    .agent-card li {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      padding: 2px 8px;
+      background: var(--bg-chip);
+      border-radius: var(--radius-sm);
+    }
+
+    .flow-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .flow-list .step {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .flow-list .step strong { color: var(--text-primary); }
+
+    .dashboard-mock {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .dashboard-mock .big { color: var(--accent); font-size: 1.4rem; font-weight: 600; }
+    .dashboard-mock .ok { color: #4ade80; }
+
+    .stack-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .stack-table th, .stack-table td {
+      text-align: left;
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: 1px solid var(--divider);
+    }
+    .stack-table th {
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .stack-table td:first-child { color: var(--text-primary); font-weight: 500; }
+    .stack-table td:last-child { color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.82rem; }
+
+    .tree {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .callout {
+      border-left: 2px solid var(--accent);
+      padding: var(--space-md) var(--space-lg);
+      background: var(--accent-soft);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-top: var(--space-lg);
+    }
+    .role-split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+    .role-split .role-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+    }
+    .role-split .role-card h3 { margin-bottom: var(--space-sm); }
+    .role-split .role-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="cv-container">
+    <a href="index.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Back to CV
+    </a>
+
+    <!-- Hero -->
+    <section class="jarvis-hero">
+      <p class="eyebrow">Multi-Agent Operating Environment</p>
+      <h1>JARVIS OS</h1>
+      <p>A natural-language interface where every AI — Claude Code, Antigravity, local models — becomes just another worker. Not a chatbot: an operating environment.</p>
+    </section>
+
+    <!-- Vision map -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">01</span> Vision</h2>
+      <div class="ascii-map">                    JARVIS OS
+              ====================
+          Natural Language Interface
+                   │
+      ┌────────────┴─────────────┐
+      │                          │
+Voice Assistant           Desktop Dashboard
+      │                          │
+      └────────────┬─────────────┘
+                   │
+           Command Router (Brain)
+                   │
+┌──────────────────┼───────────────────┐
+│                  │                   │
+Research       Development         Personal
+│                  │                   │
+├─ Browser Agent   ├─ Claude Code      ├─ Calendar
+├─ Finance Agent   ├─ GitHub Agent     ├─ Email
+├─ News Agent      ├─ Terminal Agent   ├─ Files
+├─ PDF Agent       ├─ Docker Agent     ├─ Notes
+└─ Memory Agent    └─ Testing Agent    └─ Automation</div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Architecture -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">02</span> Architecture</h2>
+      <p class="about-text">The frontend speaks to a Python core over WebSockets. An event bus feeds the Agent Manager, which dispatches to whichever engine fits the job.</p>
+      <div class="stack-flow">
+        <span class="stack-node">Electron / Tauri</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">React</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">WebSockets</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">FastAPI</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">Event Bus</span>
+        <span class="stack-arrow">→</span>
+        <span class="stack-node">Agent Manager</span>
+      </div>
+      <div class="stack-flow" style="margin-top:var(--space-md)">
+        <span class="stack-node">Claude Code</span>
+        <span class="stack-node">Antigravity</span>
+        <span class="stack-node">OpenAI</span>
+        <span class="stack-node">Gemini</span>
+        <span class="stack-node">Local Ollama</span>
+        <span class="stack-node">MCP Servers</span>
+        <span class="stack-node">Linux APIs</span>
+      </div>
+      <div class="callout">Every AI becomes just another worker. The Brain decides which agent receives each task, instead of tying the whole system to a single model.</div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Dashboard -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">03</span> Dashboard</h2>
+      <p class="about-text">Imagine opening your PC. Instead of VS Code, you see JARVIS.</p>
+      <div class="dashboard-mock">
+<span class="big">JARVIS</span> — Good Morning.
+
+CPU: 18%   GPU: 9%   <span class="ok">✔ 13 active memories</span>
+
+Agents   ● Research  ● GitHub  ● Claude
+         ● Browser   ● Finance ● Calendar
+
+Today's Tasks
+  <span class="ok">✓</span> Continue Trading EA
+  <span class="ok">✓</span> Finish Documentation
+  <span class="ok">✓</span> Review Pull Requests
+
+Recent Events
+  Claude finished testing.
+  Browser found 3 new papers.
+  Finance updated portfolio.</div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Core Agents -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">04</span> Core Agents</h2>
+      <p class="about-text">Each agent does one thing well. The Brain composes them.</p>
+      <div class="agent-grid">
+        <div class="agent-card">
+          <h3><span class="agent-emoji">🔬</span> Research</h3>
+          <div class="agent-uses">Antigravity Browser · Arxiv · PDFs</div>
+          <p>“Research reinforcement learning for prop-firm trading.”</p>
+          <ul><li>Finds papers</li><li>Downloads PDFs</li><li>Summarizes</li><li>Builds knowledge graph</li></ul>
+        </div>
+        <div class="agent-card">
+          <h3><span class="agent-emoji">⌨️</span> Code</h3>
+          <div class="agent-uses">Claude Code</div>
+          <p>“Build authentication.” → Plans → Writes → Tests → Commits → Reports. Strong at deep repo understanding and iterative changes.</p>
+        </div>
+        <div class="agent-card">
+          <h3><span class="agent-emoji">🌐</span> Browser</h3>
+          <div class="agent-uses">Antigravity</div>
+          <p>Literally drives Chrome — takes screenshots, verifies UI, clicks buttons, and validates its own work.</p>
+        </div>
+        <div class="agent-card">
+          <h3><span class="agent-emoji">🐙</span> GitHub</h3>
+          <div class="agent-uses">Repos · PRs · Issues · Actions</div>
+          <p>“PR #42 failed because the Docker image is missing Python.” Monitors and explains, automatically.</p>
+        </div>
+        <div class="agent-card">
+          <h3><span class="agent-emoji">💻</span> Terminal</h3>
+          <div class="agent-uses">Shell · Docker · Git</div>
+          <p>Runs <code>docker compose up</code>, <code>git pull</code>, <code>sudo dnf update</code>. Asks permission for dangerous commands.</p>
+        </div>
+        <div class="agent-card">
+          <h3><span class="agent-emoji">🧠</span> Memory</h3>
+          <div class="agent-uses">pgvector · Semantic search</div>
+          <p>“User prefers FastAPI. Current project uses PostgreSQL. Never use Flask.” Long-term memory across sessions.</p>
+        </div>
+        <div class="agent-card">
+          <h3><span class="agent-emoji">📈</span> Finance</h3>
+          <div class="agent-uses">MT5 · FundingPips · Binance</div>
+          <p>Reads accounts and calculates daily PnL, risk, drawdown, and profit targets.</p>
+        </div>
+        <div class="agent-card">
+          <h3><span class="agent-emoji">🐧</span> Linux</h3>
+          <div class="agent-uses">Package management</div>
+          <p>“Jarvis, install OBS.” → Searches → Installs → Configures → Reports success.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Agent communication -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">05</span> Agent Communication</h2>
+      <p class="about-text">The "planner → executor → verifier" pattern: separate reasoning, implementation, and validation.</p>
+      <div class="flow-list">
+        <div class="step"><strong>You:</strong> “Build me a weather app.”</div>
+        <div class="step"><strong>Brain</strong> → asks Research Agent to find APIs</div>
+        <div class="step"><strong>Research</strong> → finds OpenWeather</div>
+        <div class="step"><strong>Code</strong> → creates Next.js app</div>
+        <div class="step"><strong>Testing</strong> → runs tests</div>
+        <div class="step"><strong>Browser</strong> → clicks every button, finds a bug</div>
+        <div class="step"><strong>Code</strong> → fixes the bug</div>
+        <div class="step"><strong>GitHub</strong> → commits</div>
+        <div class="step"><strong>Brain</strong> → reports back to you</div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- UI + Voice -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">06</span> UI &amp; Voice</h2>
+      <p class="about-text">Think Iron Man. Agents on the left, conversation in the center, live tasks on the right, terminal at the bottom.</p>
+      <div class="flow-list" style="margin-top:var(--space-md)">
+        <div class="step"><strong>Hey Jarvis</strong> → Speech-to-text (Whisper) → Brain → Agents → Text-to-speech (Piper)</div>
+        <div class="step"><strong>“Update all repos.”</strong> → Claude codes → GitHub pulls → Docker rebuilds → Browser tests → “Done.”</div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Structure + plugins -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">07</span> Structure &amp; Plugins</h2>
+      <p class="about-text">Everything is a plugin. New agent? Drop a folder. Done.</p>
+      <div class="tree">jarvis-os/
+├── frontend/
+├── backend/
+│   ├── brain/
+│   ├── agents/
+│   │   ├── research/   ├── github/   ├── finance/
+│   │   ├── browser/    ├── terminal/ ├── voice/
+│   │   └── memory/
+│   └── plugins/
+│       ├── calendar/  ├── spotify/  ├── github/
+│       ├── docker/    ├── obs/      ├── discord/
+│       └── slack/
+├── docker/
+├── docs/
+├── tests/
+└── README.md</div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Tech stack -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">08</span> Tech Stack</h2>
+      <table class="stack-table">
+        <thead><tr><th>Layer</th><th>Technology</th></tr></thead>
+        <tbody>
+          <tr><td>Frontend</td><td>React + Tauri</td></tr>
+          <tr><td>Backend</td><td>FastAPI</td></tr>
+          <tr><td>Database</td><td>PostgreSQL + pgvector</td></tr>
+          <tr><td>Cache</td><td>Redis</td></tr>
+          <tr><td>Realtime</td><td>WebSockets</td></tr>
+          <tr><td>Auth</td><td>Keycloak or Auth.js</td></tr>
+          <tr><td>Queue</td><td>Celery or Temporal</td></tr>
+          <tr><td>Containers</td><td>Docker</td></tr>
+          <tr><td>Deployment</td><td>Docker Compose → Kubernetes</td></tr>
+          <tr><td>Memory</td><td>pgvector</td></tr>
+          <tr><td>LLM Routing</td><td>LiteLLM / OpenRouter or direct APIs</td></tr>
+          <tr><td>Local Models</td><td>Ollama</td></tr>
+          <tr><td>Voice STT</td><td>Whisper</td></tr>
+          <tr><td>Voice TTS</td><td>Piper</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Claude Code + Antigravity -->
+    <section class="cv-section">
+      <h2 class="section-title"><span class="section-number">09</span> Where Claude Code &amp; Antigravity Fit</h2>
+      <p class="about-text">Rather than choosing one, use them for different responsibilities.</p>
+      <div class="role-split">
+        <div class="role-card">
+          <h3>Claude Code</h3>
+          <p>System architect, code reviewer, refactoring, implementing complex features, writing tests, and maintaining code quality.</p>
+        </div>
+        <div class="role-card">
+          <h3>Antigravity</h3>
+          <p>Browser automation, UI verification, long autonomous coding runs, documentation gathering, and parallel background agents across multiple workspaces.</p>
+        </div>
+      </div>
+      <div class="callout">The Brain decides which agent receives each task instead of tying the whole system to a single model.</div>
+    </section>
+
+    <footer class="cv-footer">
+      <div class="footer-content">
+        <p class="footer-text">JARVIS OS · Architecture Vision</p>
+        <p class="footer-date">Purval Singh — 2026</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

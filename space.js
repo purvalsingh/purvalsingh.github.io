@@ -134,7 +134,7 @@
   $('#year').textContent = new Date().getFullYear();
 
   /* ---------- typed roles ---------- */
-  const roles = ['Web Developer', 'CS Student @ RAIT', 'Builder of things', 'Space Invaders champion (self-declared)'];
+  const roles = ['Web Developer', 'App Builder', 'Trader', 'Backtesting nerd', 'Vibe Coder', 'CS Student @ RAIT', 'Space Invaders champion (self-declared)'];
   const roleEl = $('#role');
   let ri = 0, ci = roles[0].length, del = false;
   (function type() {
@@ -145,6 +145,27 @@
     roleEl.textContent = roles[ri].slice(0, ci);
     setTimeout(type, del ? 35 : 75);
   })();
+
+  /* ---------- nav tag cycles through hats ---------- */
+  const tag = $('#brandTag'), hats = ['builder', 'web dev', 'app dev', 'trader', 'backtester', 'vibe coder'];
+  let hi = 0;
+  if (!reduce) setInterval(() => {
+    tag.style.opacity = 0;
+    setTimeout(() => { hi = (hi + 1) % hats.length; tag.textContent = hats[hi]; tag.style.opacity = 1; }, 250);
+  }, 2400);
+
+  /* ---------- contact heading swaps what you might bring ---------- */
+  const swap = $('#swap');
+  const asks = ['a site in mind', 'an app idea', 'work to automate', 'a strategy to test', 'a wild idea'];
+  let ai = 0;
+  if (!reduce) setInterval(() => {
+    swap.classList.add('out');
+    setTimeout(() => {
+      ai = (ai + 1) % asks.length; swap.textContent = asks[ai];
+      swap.classList.replace('out', 'pre');
+      requestAnimationFrame(() => requestAnimationFrame(() => swap.classList.remove('pre')));
+    }, 350);
+  }, 2600);
 
   /* ---------- burger menu ---------- */
   const burger = $('#burger'), links = $('#navLinks');

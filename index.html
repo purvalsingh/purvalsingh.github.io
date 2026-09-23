@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Purval Singh — Web Developer</title>
-  <meta name="description" content="Purval Singh — Computer Engineering student at RAIT and web developer. Brand websites, web apps and interactive builds. Space-themed portfolio with playable arcade games.">
+  <title>Purval Singh — Builder</title>
+  <meta name="description" content="Purval Singh — Computer Engineering student at RAIT who builds websites, apps, trading tools and backtesting engines. Space-themed portfolio with playable arcade games.">
   <meta name="theme-color" content="#04050d">
-  <meta property="og:title" content="Purval Singh — Web Developer">
-  <meta property="og:description" content="Brand websites, web apps and interactive builds. Come play Space Invaders.">
+  <meta property="og:title" content="Purval Singh — Builder">
+  <meta property="og:description" content="Websites, apps, trading tools and backtesting engines. Come play Space Invaders.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/229818956?v=4">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='22' fill='%235ef2ff'/><ellipse cx='50' cy='50' rx='44' ry='12' fill='none' stroke='%239b7bff' stroke-width='6' transform='rotate(-20 50 50)'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
 
   <header class="nav" id="nav">
     <a href="#top" class="brand" aria-label="Purval Singh — home">
-      <span class="brand-planet"></span><span>Purval Singh</span><em class="brand-tag mono">web dev</em>
+      <span class="brand-planet"></span><span>Purval Singh</span><em class="brand-tag mono" id="brandTag">builder</em>
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Main">
       <a href="#about">Brief</a>
@@ -54,7 +54,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-copy">
-        <p class="chip mono reveal"><i class="pulse"></i> Open to freelance web work</p>
+        <p class="chip mono reveal"><i class="pulse"></i> Open to projects &amp; collabs</p>
         <h1 class="hero-title">
           <span class="line"><span>Purval</span></span>
           <span class="line"><span>Singh<em>.</em></span></span>
@@ -63,8 +63,8 @@
           <span class="dim">&gt;</span> <span id="role">Web Developer</span><span class="caret">_</span>
         </p>
         <p class="hero-sub reveal">
-          Computer Engineering student at RAIT, Mumbai. I design and build websites that move —
-          brand sites, web apps, and the odd game when nobody is watching.
+          Computer Engineering student at RAIT, Mumbai. I build a bit of everything: websites that move,
+          apps, trading tools and backtesting engines, mostly vibe-coded with AI as my co-pilot.
         </p>
         <div class="hero-ctas reveal">
           <a href="#missions" class="btn btn-primary magnetic">View missions</a>
@@ -90,7 +90,7 @@
     <!-- MARQUEE -->
     <div class="marquee mono" aria-hidden="true">
       <div class="marquee-track" id="marquee">
-        <span>HTML</span><span>✦</span><span>CSS</span><span>✦</span><span>JavaScript</span><span>✦</span><span>TypeScript</span><span>✦</span><span>React</span><span>✦</span><span>Next.js</span><span>✦</span><span>Node.js</span><span>✦</span><span>Python</span><span>✦</span><span>Canvas</span><span>✦</span><span>GSAP</span><span>✦</span><span>Vercel</span><span>✦</span><span>Linux</span><span>✦</span>
+        <span>HTML</span><span>✦</span><span>CSS</span><span>✦</span><span>JavaScript</span><span>✦</span><span>TypeScript</span><span>✦</span><span>React</span><span>✦</span><span>Next.js</span><span>✦</span><span>Node.js</span><span>✦</span><span>Python</span><span>✦</span><span>Canvas</span><span>✦</span><span>GSAP</span><span>✦</span><span>Vercel</span><span>✦</span><span>Linux</span><span>✦</span><span>Backtesting</span><span>✦</span><span>MT5</span><span>✦</span><span>AI agents</span><span>✦</span>
       </div>
     </div>
 
@@ -101,14 +101,14 @@
         <h2 class="split">Mission brief</h2>
       </div>
       <div class="brief">
-        <p class="brief-text" id="briefText">I'm a curious Computer Engineering student who got hooked on building things for the web. I started with cybersecurity and digital forensics, and now I spend most of my time shipping websites and apps — from motion-heavy brand sites for real businesses to a farmer marketplace for Smart India Hackathon. I learn by building, keep my code clean, and care about how things feel to use.</p>
+        <p class="brief-text" id="briefText">I'm a curious Computer Engineering student who got hooked on building things for the web. I started with cybersecurity and digital forensics, and now I spend most of my time shipping websites and apps — from motion-heavy brand sites for real businesses to a farmer marketplace for Smart India Hackathon. On the side I trade and build my own backtesting and validation tools, because I want to know whether an edge is real before I put money behind it. I learn by building and care about how things feel to use.</p>
         <div class="brief-card tilt">
           <div class="brief-row mono"><span class="dim">callsign</span><b>purval</b></div>
           <div class="brief-row mono"><span class="dim">base</span><b>Mumbai, IN</b></div>
           <div class="brief-row mono"><span class="dim">academy</span><b>RAIT — B.Tech CE</b></div>
           <div class="brief-row mono"><span class="dim">class of</span><b>2029</b></div>
           <div class="brief-row mono"><span class="dim">public repos</span><b id="repoCount">—</b></div>
-          <div class="brief-row mono"><span class="dim">status</span><b class="ok">● taking web projects</b></div>
+          <div class="brief-row mono"><span class="dim">status</span><b class="ok">● open to projects</b></div>
         </div>
       </div>
     </section>
@@ -137,6 +137,12 @@
           <h3>Interactive &amp; games</h3>
           <p>Canvas animations, micro-interactions and browser games. Everything in the arcade below is hand-written, no engine.</p>
           <p class="mono dim small">Canvas · Web Audio · Lua (Roblox)</p>
+        </article>
+        <article class="svc tilt reveal">
+          <span class="svc-icon" aria-hidden="true">⟁</span>
+          <h3>Trading &amp; backtesting</h3>
+          <p>Backtesting engines and strategy validation that hunt for the ways a backtest lies, plus automation that connects strategies to MetaTrader 5.</p>
+          <p class="mono dim small">Python · TypeScript · MT5 · Statistics</p>
         </article>
       </div>
     </section>
@@ -333,7 +339,8 @@
     <!-- CONTACT -->
     <section class="section contact" id="contact">
       <p class="mono dim"><span class="sec-num">07</span> · transmission</p>
-      <h2 class="contact-title split">Got a site that<br>needs to launch?</h2>
+      <h2 class="contact-title reveal">Got <span class="swap" id="swap">a site in mind</span><br><span class="launch">Let's launch it.</span></h2>
+      <p class="contact-sub reveal">Websites, apps, automations that do the boring work for you, trading tools. If it runs on code, I'm in.</p>
       <a href="mailto:purvalsingh@yahoo.com" class="contact-mail magnetic">purvalsingh@yahoo.com</a>
       <div class="socials mono">
         <a href="https://github.com/purvalsingh" target="_blank" rel="noopener">GitHub ↗</a>

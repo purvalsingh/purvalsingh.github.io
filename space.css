@@ -115,7 +115,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav.scrolled { background: rgba(4, 5, 13, .6); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .nav.hidden { transform: translateY(-110%); }
 .brand { display: flex; align-items: center; gap: .6rem; font-weight: 600; font-size: 1.05rem; }
-.brand-tag { font-style: normal; font-size: .62rem; font-weight: 500; color: var(--cyan); text-transform: uppercase; letter-spacing: .12em; border: 1px solid rgba(94,242,255,.35); border-radius: 999px; padding: .15rem .5rem; }
+.brand-tag { font-style: normal; font-size: .62rem; font-weight: 500; color: var(--cyan); text-transform: uppercase; letter-spacing: .12em; border: 1px solid rgba(94,242,255,.35); border-radius: 999px; padding: .15rem .5rem; transition: opacity .25s; min-width: 7.2em; text-align: center; }
 .brand-planet {
   width: 22px; height: 22px; border-radius: 50%; position: relative;
   background: radial-gradient(circle at 35% 35%, #fff, var(--cyan) 40%, #1f4bff);
@@ -266,7 +266,7 @@ body.ready .hero-title .line > span { transform: none; }
 .brief-row b { font-weight: 500; text-align: right; }
 
 /* services */
-.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
 .svc {
   background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 1.6rem;
   backdrop-filter: blur(10px); position: relative; overflow: hidden;
@@ -387,7 +387,19 @@ body.ready .hero-title .line > span { transform: none; }
 
 /* contact */
 .contact { text-align: center; padding-bottom: 6rem; }
-.contact-title { margin: 1rem 0 2rem; }
+.contact-title { margin: 1rem 0 1.2rem; }
+.swap {
+  display: inline-block; color: var(--cyan); text-shadow: 0 0 28px rgba(94,242,255,.45);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .35s, filter .35s;
+}
+.swap::after { content: "?"; color: var(--text); text-shadow: none; }
+.swap.out { transform: translateY(-.35em) scale(.96); opacity: 0; filter: blur(6px); }
+.swap.pre { transform: translateY(.35em) scale(.96); opacity: 0; filter: blur(6px); transition: none; }
+.launch {
+  background: linear-gradient(100deg, #fff 20%, #b9c3ff 55%, var(--violet));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.contact-sub { color: var(--dim); max-width: 34rem; margin: 0 auto 2.2rem; }
 .contact-mail {
   display: inline-block; font-size: clamp(1.1rem, 3.6vw, 2.4rem); font-weight: 600;
   background: linear-gradient(90deg, var(--cyan), var(--violet), var(--cyan)); background-size: 200% 100%;

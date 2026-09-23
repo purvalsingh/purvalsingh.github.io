@@ -72,13 +72,21 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     display: block; position: fixed; left: 0; top: 0; z-index: 200; pointer-events: none;
     width: 34px; height: 34px; margin: -17px 0 0 -17px;
     border: 1px solid rgba(94, 242, 255, .7); border-radius: 50%;
+    background: radial-gradient(circle, var(--cyan) 0 1.5px, transparent 2px);
     transition: width .25s, height .25s, margin .25s, background .25s, border-color .25s;
   }
   .cursor::before, .cursor::after {
-    content: ''; position: absolute; background: var(--cyan); left: 50%; top: 50%;
+    content: ''; position: absolute; left: 50%; top: 50%; transition: opacity .2s;
   }
-  .cursor::before { width: 1px; height: 8px; transform: translate(-50%, -150%); box-shadow: 0 24px 0 var(--cyan); }
-  .cursor::after { height: 1px; width: 8px; transform: translate(-150%, -50%); box-shadow: 24px 0 0 var(--cyan); }
+  /* four ticks crossing the ring, gap in the middle */
+  .cursor::before {
+    width: 1px; height: 48px; transform: translate(-50%, -50%);
+    background: linear-gradient(var(--cyan) 0 9px, transparent 9px 39px, var(--cyan) 39px);
+  }
+  .cursor::after {
+    height: 1px; width: 48px; transform: translate(-50%, -50%);
+    background: linear-gradient(90deg, var(--cyan) 0 9px, transparent 9px 39px, var(--cyan) 39px);
+  }
   .cursor span {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
     font: 600 .55rem var(--mono); letter-spacing: .1em; color: var(--bg); white-space: nowrap; opacity: 0;

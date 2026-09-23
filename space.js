@@ -134,7 +134,7 @@
   $('#year').textContent = new Date().getFullYear();
 
   /* ---------- typed roles ---------- */
-  const roles = ['Web Developer', 'App Builder', 'Trader', 'Backtesting nerd', 'Vibe Coder', 'CS Student @ RAIT', 'Space Invaders champion (self-declared)'];
+  const roles = ['Web Developer', 'App Builder', 'Backtesting nerd', 'Vibe Coder', 'CS Student @ RAIT', 'Space Invaders champion (self-declared)'];
   const roleEl = $('#role');
   let ri = 0, ci = roles[0].length, del = false;
   (function type() {

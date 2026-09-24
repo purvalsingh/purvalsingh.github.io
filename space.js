@@ -147,7 +147,7 @@
   })();
 
   /* ---------- nav tag cycles through hats ---------- */
-  const tag = $('#brandTag'), hats = ['builder', 'web dev', 'app dev', 'trader', 'backtester', 'vibe coder'];
+  const tag = $('#brandTag'), hats = ['builder', 'web dev', 'app dev', 'backtester', 'vibe coder'];
   let hi = 0;
   if (!reduce) setInterval(() => {
     tag.style.opacity = 0;

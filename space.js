@@ -134,7 +134,7 @@
   $('#year').textContent = new Date().getFullYear();
 
   /* ---------- typed roles ---------- */
-  const roles = ['Web Developer', 'App Builder', 'Backtesting nerd', 'Vibe Coder', 'CS Student @ RAIT', 'Space Invaders champion (self-declared)'];
+  const roles = ['Web Developer', 'App Builder', 'Vibe Coder', 'CS Student @ RAIT', 'Space Invaders champion (self-declared)'];
   const roleEl = $('#role');
   let ri = 0, ci = roles[0].length, del = false;
   (function type() {
@@ -147,7 +147,7 @@
   })();
 
   /* ---------- nav tag cycles through hats ---------- */
-  const tag = $('#brandTag'), hats = ['builder', 'web dev', 'app dev', 'backtester', 'vibe coder'];
+  const tag = $('#brandTag'), hats = ['builder', 'web dev', 'app dev', 'vibe coder'];
   let hi = 0;
   if (!reduce) setInterval(() => {
     tag.style.opacity = 0;

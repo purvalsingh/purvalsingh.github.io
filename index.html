@@ -3,365 +3,208 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Purval Singh — Builder</title>
-  <meta name="description" content="Purval Singh — Computer Engineering student at RAIT who builds websites, apps and AI tools. Space-themed portfolio with playable arcade games.">
-  <meta name="theme-color" content="#04050d">
-  <meta property="og:title" content="Purval Singh — Builder">
-  <meta property="og:description" content="Websites, apps and AI tools. Come play Space Invaders.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/229818956?v=4">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='22' fill='%235ef2ff'/><ellipse cx='50' cy='50' rx='44' ry='12' fill='none' stroke='%239b7bff' stroke-width='6' transform='rotate(-20 50 50)'/></svg>">
+  <title>Purval Singh · Software Engineer</title>
+  <meta name="description" content="Purval Singh, software engineer (Python, SQL, React, Java). I build tested software: machine-learning models, full-stack apps and data tools. Open to internships 2026.">
+  <meta name="theme-color" content="#e3120b">
+  <meta property="og:title" content="Purval Singh · Software Engineer">
+  <meta property="og:description" content="Tested software: an ML malware detector validated on 22,182 real files, a Smart India Hackathon marketplace, and a 13-gate analytics terminal.">
+  <meta property="og:image" content="https://purvalsingh.github.io/assets/work/krishisetu.webp">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23e3120b'/><text x='50' y='70' font-family='Arial Black,Arial' font-weight='900' font-size='54' text-anchor='middle' fill='white'>PS</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="space.css?v=20261126d">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,700;62..125,800&family=Archivo+Black&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="swiss.css?v=1">
 </head>
 <body>
-  <canvas id="stars" aria-hidden="true"></canvas>
-  <div class="nebula" aria-hidden="true"><span></span><span></span><span></span></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="cursor" aria-hidden="true"><span></span></div>
+  <a class="skip" href="#work">Skip to work</a>
+  <div class="grid-overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="progress" aria-hidden="true"></div>
 
-  <!-- Loader: countdown to launch -->
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader-ring"><span></span></div>
-    <p class="mono">T-minus <b id="count">10</b></p>
-    <p class="mono dim">ignition sequence</p>
-  </div>
-
-  <header class="nav" id="nav">
-    <a href="#top" class="brand" aria-label="Purval Singh — home">
-      <span class="brand-planet"></span><span>Purval Singh</span><em class="brand-tag mono" id="brandTag">builder</em>
-    </a>
-    <nav class="nav-links" id="navLinks" aria-label="Main">
-      <a href="#about">Brief</a>
-      <a href="#services">Services</a>
-      <a href="#missions">Missions</a>
-      <a href="#log">Flight log</a>
-      <a href="#arcade">Arcade</a>
-      <a href="#contact" class="nav-cta">Open a channel</a>
+  <header class="nav">
+    <a class="mark" href="#top" aria-label="Purval Singh, home">PS</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a><a href="#apps">Apps</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
     </nav>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    <a class="btn-red" href="assets/Purval_Singh_Resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
   </header>
-
-  <!-- HUD -->
-  <aside class="hud mono" aria-hidden="true">
-    <div>ALT <b id="alt">000</b> km</div>
-    <div>IST <b id="clock">--:--:--</b></div>
-  </aside>
 
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-copy">
-        <p class="chip mono reveal"><i class="pulse"></i> Open to projects &amp; collabs</p>
-        <h1 class="hero-title">
-          <span class="line"><span>Purval</span></span>
-          <span class="line"><span>Singh<em>.</em></span></span>
-        </h1>
-        <p class="hero-role mono reveal">
-          <span class="dim">&gt;</span> <span id="role">Web Developer</span><span class="caret">_</span>
-        </p>
-        <p class="hero-sub reveal">
-          Computer Engineering student at RAIT, Mumbai. I build a bit of everything: websites that move,
-          apps and AI tools, mostly vibe-coded with AI as my co-pilot.
-        </p>
-        <div class="hero-ctas reveal">
-          <a href="#missions" class="btn btn-primary magnetic">View missions</a>
-          <a href="#arcade" class="btn btn-ghost magnetic" data-warp>Play a game ▸</a>
-        </div>
+      <div class="hero-red">
+        <h1 class="hero-name"><span>Purval</span><span>Singh</span></h1>
+        <p class="hero-meta">Software engineer<br>Python · SQL · React · Java<br>Mumbai · B.Tech CE, RAIT</p>
       </div>
-
-      <div class="hero-orbit reveal" id="orbit">
-        <div class="ring r1"><i class="moon m1"></i></div>
-        <div class="ring r2"><i class="moon m2"></i></div>
-        <div class="ring r3"><i class="moon m3"></i></div>
-        <a href="https://github.com/purvalsingh" target="_blank" rel="noopener" class="avatar-wrap" aria-label="Purval on GitHub">
-          <img src="https://avatars.githubusercontent.com/u/229818956?v=4" alt="Purval Singh's GitHub avatar" width="220" height="220">
-        </a>
-        <span class="orbit-tag mono t1">@purvalsingh</span>
-        <span class="orbit-tag mono t2">RAIT · CE '29</span>
-        <span class="orbit-tag mono t3">Mumbai · IN</span>
-      </div>
-
-      <a href="#about" class="scroll-hint mono" aria-label="Scroll down">scroll to launch <span></span></a>
-    </section>
-
-    <!-- MARQUEE -->
-    <div class="marquee mono" aria-hidden="true">
-      <div class="marquee-track" id="marquee">
-        <span>HTML</span><span>✦</span><span>CSS</span><span>✦</span><span>JavaScript</span><span>✦</span><span>TypeScript</span><span>✦</span><span>React</span><span>✦</span><span>Next.js</span><span>✦</span><span>Node.js</span><span>✦</span><span>Python</span><span>✦</span><span>Canvas</span><span>✦</span><span>GSAP</span><span>✦</span><span>Vercel</span><span>✦</span><span>Linux</span><span>✦</span><span>Electron</span><span>✦</span><span>Gemini API</span><span>✦</span><span>AI agents</span><span>✦</span>
-      </div>
-    </div>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="sec-head">
-        <span class="sec-num mono">01</span>
-        <h2 class="split">Mission brief</h2>
-      </div>
-      <div class="brief">
-        <p class="brief-text" id="briefText">I'm a curious Computer Engineering student who got hooked on building things for the web. I started with cybersecurity and digital forensics, and now I spend most of my time shipping websites and apps — from motion-heavy brand sites for real businesses to a farmer marketplace for Smart India Hackathon. On the side I build AI tools and local assistants for myself. I learn by building and care about how things feel to use.</p>
-        <div class="brief-card tilt">
-          <div class="brief-row mono"><span class="dim">callsign</span><b>purval</b></div>
-          <div class="brief-row mono"><span class="dim">base</span><b>Mumbai, IN</b></div>
-          <div class="brief-row mono"><span class="dim">academy</span><b>RAIT — B.Tech CE</b></div>
-          <div class="brief-row mono"><span class="dim">class of</span><b>2029</b></div>
-          <div class="brief-row mono"><span class="dim">public repos</span><b id="repoCount">—</b></div>
-          <div class="brief-row mono"><span class="dim">status</span><b class="ok">● open to projects</b></div>
+      <div class="hero-main">
+        <p class="status"><i></i>Open to internships · 2026</p>
+        <p class="kick">I build tested software: machine&#8209;learning models, full&#8209;stack apps and data tools that hold up when you try to break them.</p>
+        <div class="hero-cta">
+          <a class="btn-red" href="assets/Purval_Singh_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+          <a class="link" href="https://github.com/purvalsingh" target="_blank" rel="noopener">GitHub</a>
+          <a class="link" href="https://www.linkedin.com/in/purval-singh-052724332" target="_blank" rel="noopener">LinkedIn</a>
+          <button class="link copy" type="button" data-copy="purvalsingh@yahoo.com">purvalsingh@yahoo.com</button>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="sec-head">
-        <span class="sec-num mono">02</span>
-        <h2 class="split">What I build</h2>
-      </div>
-      <div class="services">
-        <article class="svc tilt reveal">
-          <span class="svc-icon" aria-hidden="true">◐</span>
-          <h3>Brand websites</h3>
-          <p>Responsive sites for businesses and creators, built around their real content — scroll motion, hover detail, and fast loads on every screen.</p>
-          <p class="mono dim small">HTML · CSS · JS · GSAP · Vercel</p>
-        </article>
-        <article class="svc tilt reveal">
-          <span class="svc-icon" aria-hidden="true">⌬</span>
-          <h3>Web apps</h3>
-          <p>Full-stack apps with auth, databases and dashboards — like a marketplace that routes farmers' produce, or a fitness PWA that works offline.</p>
-          <p class="mono dim small">Next.js · TypeScript · Prisma · Node</p>
-        </article>
-        <article class="svc tilt reveal">
-          <span class="svc-icon" aria-hidden="true">✺</span>
-          <h3>Interactive &amp; games</h3>
-          <p>Canvas animations, micro-interactions and browser games. Everything in the arcade below is hand-written, no engine.</p>
-          <p class="mono dim small">Canvas · Web Audio · Lua (Roblox)</p>
-        </article>
-        <article class="svc tilt reveal">
-          <span class="svc-icon" aria-hidden="true">⟁</span>
-          <h3>AI tools &amp; automation</h3>
-          <p>Assistants and automations that put LLMs to work: local voice agents, AI food logging, and scripts that do the boring work for you.</p>
-          <p class="mono dim small">Python · TypeScript · Gemini · Ollama</p>
-        </article>
-      </div>
+    <!-- NUMBERS -->
+    <section class="numbers" aria-label="Key numbers">
+      <div><b data-count="22182">22,182</b><span>real PDFs used to test PDFShield</span></div>
+      <div><b data-count="76.2" data-dec="1">76.2</b><b class="u">%</b><span>of unseen malware caught, at 1.3% false positives</span></div>
+      <div><b data-count="13">13</b><span>statistical gates every Quantum Forge result must pass</span></div>
+      <div><b data-count="16365">16,365</b><span>foods in the FORGE nutrition database</span></div>
     </section>
 
-    <!-- MISSIONS -->
-    <section class="section" id="missions">
-      <div class="sec-head">
-        <span class="sec-num mono">03</span>
-        <h2 class="split">Missions</h2>
-        <div class="filters mono" role="tablist" aria-label="Filter projects">
-          <button class="on" data-f="all">all</button>
-          <button data-f="web">websites</button>
-          <button data-f="app">apps</button>
-          <button data-f="lab">labs</button>
+    <!-- WORK -->
+    <section class="sec" id="work">
+      <div class="sec-head"><span class="sec-no">01</span><h2>Selected work</h2></div>
+
+      <article class="proj">
+        <div class="proj-no">01</div>
+        <div class="proj-body">
+          <h3>PDFShield</h3>
+          <p class="proj-tag">Machine-learning detector for malicious PDFs</p>
+          <p>Reads a PDF's internal structure and what its JavaScript actually does, then scores the risk and explains why. It never opens or runs the file.</p>
+          <dl class="facts">
+            <div><dt>Built with</dt><dd>Python · scikit-learn (Random Forest, 17 features) · Docker · GitHub Actions</dd></div>
+            <div><dt>Tested on</dt><dd>22,182 real PDFs, including 13,089 real malware samples it never saw in training</dd></div>
+            <div><dt>How I work</dt><dd>Tests run on every push; the Docker image has no network and a read-only filesystem</dd></div>
+          </dl>
+          <p class="proj-links"><a href="https://github.com/purvalsingh/pdfshield" target="_blank" rel="noopener">Code and results ↗</a></p>
         </div>
-      </div>
+        <div class="proj-result"><b>76.2%</b><span>recall at 1.3% false positives</span></div>
+        <figure class="proj-shot dark"><img src="assets/work/pdfshield.svg" alt="PDFShield scanning a folder and flagging two malicious PDFs with reasons" loading="lazy" width="820" height="486"></figure>
+      </article>
 
-      <div class="missions" id="missionGrid">
-        <article class="mission tilt flip" data-k="lab">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <div class="m-top mono"><span>M-01</span><span class="m-status">● lab</span></div>
-              <h3>Quantum Forge</h3>
-              <p>Desktop backtesting terminal that asks <em class="qf-q">"what would make this result fake?"</em> Describe a strategy in plain English, watch it trade bar by bar, then face 13 statistical gates that have judged 33,000+ strategies.</p>
-              <div class="tags mono"><span>TypeScript</span><span>Electron</span><span>Statistics</span></div>
-              <div class="m-links"><button class="flip-btn" type="button" aria-expanded="false">See the 13 gates ↻</button></div>
-            </div>
-            <div class="flip-face flip-back mono" aria-hidden="true">
-              <div class="qf-head"><span class="qf-dot"></span>validation run · 13 gates</div>
-              <ol class="qf-gates"><li style="--i:0"><span class="g-n">01</span><span class="g-name">sample size</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:1"><span class="g-n">02</span><span class="g-name">out-of-sample</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:2"><span class="g-n">03</span><span class="g-name">walk-forward</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:3"><span class="g-n">04</span><span class="g-name">placebo</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:4"><span class="g-n">05</span><span class="g-name">mirror</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:5"><span class="g-n">06</span><span class="g-name">neighbour</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:6" class="fail"><span class="g-n">07</span><span class="g-name">luck</span><span class="g-dots"></span><span class="g-res">FAIL</span></li><li style="--i:7"><span class="g-n">08</span><span class="g-name">decay</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:8"><span class="g-n">09</span><span class="g-name">cost stress</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:9"><span class="g-n">10</span><span class="g-name">monte carlo</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:10"><span class="g-n">11</span><span class="g-name">bootstrap</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:11"><span class="g-n">12</span><span class="g-name">too-good</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:12"><span class="g-n">13</span><span class="g-name">cross-engine</span><span class="g-dots"></span><span class="g-res">PASS</span></li></ol>
-              <div class="qf-verdict"><span>verdict</span><b>REJECTED</b><em>5 lucky trades</em></div>
-              <button class="flip-btn" type="button">↺ Back</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="mission tilt" data-k="app">
-          <div class="m-top mono"><span>M-02</span><span class="m-status live">● live</span></div>
+      <article class="proj">
+        <div class="proj-no">02</div>
+        <div class="proj-body">
           <h3>KrishiSetu</h3>
-          <p>Farmer-first agricultural marketplace built for Smart India Hackathon 2026 with team Logic_Lords. Per-place demand forecasts and unsold-stock routing.</p>
-          <div class="tags mono"><span>Next.js</span><span>TypeScript</span><span>Prisma</span></div>
-          <div class="m-links">
-            <a href="https://krishisetu-weld.vercel.app" target="_blank" rel="noopener">Live ↗</a>
-          </div>
-        </article>
+          <p class="proj-tag">Full-stack farmer marketplace · Smart India Hackathon 2026</p>
+          <p>Farmers set their price, and neighbouring orders share one delivery route so small harvests reach buyers without losing their margin.</p>
+          <dl class="facts">
+            <div><dt>Built with</dt><dd>Next.js · TypeScript · PostgreSQL · Python FastAPI compute service</dd></div>
+            <div><dt>Data</dt><dd>Government AGMARKNET price feed through a scheduled daily pipeline</dd></div>
+            <div><dt>How I work</dt><dd>Automated tests for pricing, pooling, routing and forecasting; forecasts use a chronological holdout</dd></div>
+          </dl>
+          <p class="proj-links"><a href="https://krishisetu-weld.vercel.app" target="_blank" rel="noopener">Live site ↗</a><a href="https://github.com/purvalsingh/krishisetu" target="_blank" rel="noopener">Code ↗</a></p>
+        </div>
+        <div class="proj-result"><b>SIH</b><span>2026 · team Logic_Lords</span></div>
+        <figure class="proj-shot"><img src="assets/work/krishisetu.webp" alt="KrishiSetu homepage: Good food begins with a fairer journey" loading="lazy" width="1440" height="900"></figure>
+      </article>
 
+      <article class="proj">
+        <div class="proj-no">03</div>
+        <div class="proj-body">
+          <h3>Quantum Forge</h3>
+          <p class="proj-tag">Desktop backtesting and analytics terminal</p>
+          <p>Most backtesters ask what a strategy returned. This one asks what would make the result fake. Describe a strategy in plain English, watch it replay bar by bar, then every run faces 13 statistical gates. Pass 12 and fail one, and it is still rejected.</p>
+          <dl class="facts">
+            <div><dt>Built with</dt><dd>TypeScript · Electron · statistics (Sharpe, Calmar, drawdown, p-values)</dd></div>
+            <div><dt>How I work</dt><dd>Engine contracts are enforced by automated self-checks</dd></div>
+          </dl>
+          <details class="gates">
+            <summary>See the 13 gates</summary>
+            <ol>
+              <li>Sample size</li><li>Out-of-sample</li><li>Walk-forward</li><li>Placebo</li><li>Mirror</li><li>Neighbour</li><li class="fail">Luck <em>fails if profit vanishes without its 5 best trades</em></li><li>Decay</li><li>Cost stress</li><li>Monte Carlo</li><li>Bootstrap</li><li>Too-good</li><li>Cross-engine</li>
+            </ol>
+          </details>
+        </div>
+        <div class="proj-result"><b>13</b><span>gates per result</span></div>
+        <figure class="proj-shot type" aria-hidden="true"><div class="qf"><span>validation run</span><p>01 sample size<em>pass</em></p><p>02 out-of-sample<em>pass</em></p><p>03 walk-forward<em>pass</em></p><p>04 placebo<em>pass</em></p><p class="x">07 luck<em>fail</em></p><strong>Rejected</strong></div></figure>
+      </article>
+    </section>
 
-        <article class="mission tilt" data-k="web">
-          <div class="m-top mono"><span>M-03</span><span class="m-status live">● live</span></div>
-          <h3>Socially Blends</h3>
-          <p>Motion-heavy site for a dubbing studio — language-cycling hero, reel lightbox, and a before/after dubbing wipe demo.</p>
-          <div class="tags mono"><span>GSAP</span><span>Lenis</span><span>Canvas</span></div>
-          <div class="m-links">
-            <a href="https://socially-blends.vercel.app" target="_blank" rel="noopener">Live ↗</a>
-          </div>
-        </article>
-
-        <article class="mission tilt" data-k="app">
-          <div class="m-top mono"><span>M-04</span><span class="m-status">● team</span></div>
-          <h3>AdaptPrep</h3>
-          <p>Team project: JEE/NEET exam-prep platform with mock tests, a Gemini-powered study coach that reads your test history, and subject-wise performance analytics.</p>
-          <div class="tags mono"><span>JavaScript</span><span>Gemini</span></div>
-          <div class="m-links">
-            <a href="https://github.com/purvalsingh/adaptprep-ai-learning-platform" target="_blank" rel="noopener">Code ↗</a>
-          </div>
-        </article>
-
-        <article class="mission tilt" data-k="app">
-          <div class="m-top mono"><span>M-05</span><span class="m-status live">● live</span></div>
-          <h3>Folio</h3>
-          <p>Android and iPhone reader that turns 31 hard classics, from The Prince to the Thirukkural, into illustrated one-minute flashcards. Every quote is verified against the original text. Also has spaced-repetition recall, chapter quizzes, read-aloud, Hindi meanings, a home-screen widget and in-app updates.</p>
-          <div class="tags mono"><span>Kotlin</span><span>Jetpack Compose</span><span>Python</span><span>ML Kit</span></div>
-          <div class="m-links">
-            <a href="https://purvalsingh.github.io/folio/" target="_blank" rel="noopener">iPhone / Web ↗</a>
-            <a href="https://github.com/purvalsingh/folio/releases/latest/download/Folio.apk" rel="noopener">APK ↓</a>
-            <a href="https://github.com/purvalsingh/folio" target="_blank" rel="noopener">Code ↗</a>
-          </div>
-        </article>
-
-        <article class="mission tilt" data-k="app">
-          <div class="m-top mono"><span>M-06</span><span class="m-status live">● live</span></div>
+    <!-- APPS -->
+    <section class="sec" id="apps">
+      <div class="sec-head"><span class="sec-no">02</span><h2>Published apps</h2></div>
+      <div class="apps">
+        <article class="app">
+          <figure><img src="assets/work/forge.webp" alt="FORGE app website: Your gym and your thali, in one app" loading="lazy" width="1440" height="900"></figure>
           <h3>FORGE</h3>
-          <p>Fitness &amp; Indian nutrition app for Android and iPhone — 16,000+ foods across all 28 states and 8 UTs, an AI food camera on each user's own encrypted Gemini keys, and workouts with real progression.</p>
-          <div class="tags mono"><span>React</span><span>Capacitor</span><span>Supabase</span><span>Gemini</span></div>
-          <div class="m-links">
-            <a href="https://forgefit-india.vercel.app" target="_blank" rel="noopener">Live ↗</a>
-            <a href="https://forgefit-india.vercel.app/download/forge.apk" rel="noopener">APK ↓</a>
-            <a href="https://github.com/purvalsingh/forge-fitness-app" target="_blank" rel="noopener">Code ↗</a>
-          </div>
+          <p>Fitness and Indian nutrition app for Android, iPhone and web. 16,365 foods across all 28 states and 8 union territories, and an AI food camera that runs on each user's own encrypted Gemini keys.</p>
+          <p class="stack">React 19 · TypeScript · Capacitor · Supabase · Gemini</p>
+          <p class="proj-links"><a href="https://forgefit-india.vercel.app" target="_blank" rel="noopener">Website and download ↗</a><a href="https://github.com/purvalsingh/forge-fitness-app" target="_blank" rel="noopener">Code ↗</a></p>
         </article>
-
-
-        <article class="mission tilt" data-k="lab">
-          <div class="m-top mono"><span>M-07</span><span class="m-status">● build</span></div>
-          <h3>Wayfarer's Guild</h3>
-          <p>Roblox life-sim RPG: farm, craft and train as a civilian, then attempt the Guild Exam to unlock Aura and dangerous regions.</p>
-          <div class="tags mono"><span>Lua</span><span>Roblox</span><span>Game design</span></div>
-          <div class="m-links">
-            <a href="https://github.com/purvalsingh/wayfarers-guild" target="_blank" rel="noopener">Code ↗</a>
-          </div>
-        </article>
-
-
-        <article class="mission tilt" data-k="lab">
-          <div class="m-top mono"><span>M-08</span><span class="m-status live">● live</span></div>
-          <h3>Space Invaders</h3>
-          <p>Browser remake of the arcade classic — waves, shields, a mystery UFO, local high scores and touch controls.</p>
-          <div class="tags mono"><span>Canvas</span><span>Web Audio</span></div>
-          <div class="m-links">
-            <a href="space-invaders/">Play ↗</a>
-          </div>
+        <article class="app">
+          <figure><img src="assets/work/folio.webp" alt="Folio website: The books you mean to read" loading="lazy" width="1440" height="900"></figure>
+          <h3>Folio</h3>
+          <p>Native Android reader that turns 31 hard classics into one-minute illustrated pages. Every quote is checked word for word against the original text by a Python pipeline.</p>
+          <p class="stack">Kotlin · Jetpack Compose · Python · ML Kit</p>
+          <p class="proj-links"><a href="https://folio-site-liart.vercel.app" target="_blank" rel="noopener">Website ↗</a><a href="https://github.com/purvalsingh/folio/releases/latest" target="_blank" rel="noopener">Releases ↗</a><a href="https://github.com/purvalsingh/folio" target="_blank" rel="noopener">Code ↗</a></p>
         </article>
       </div>
     </section>
 
-    <!-- FLIGHT LOG -->
-    <section class="section" id="log">
-      <div class="sec-head">
-        <span class="sec-num mono">04</span>
-        <h2 class="split">Flight log</h2>
+    <!-- EXPERIENCE -->
+    <section class="sec" id="experience">
+      <div class="sec-head"><span class="sec-no">03</span><h2>Experience</h2></div>
+      <div class="rows">
+        <div class="row">
+          <span class="when">2026 – now</span>
+          <div><h3>Freelance software developer</h3><p>Took requirements from non-technical business owners and delivered production websites end to end, from scope to deploy. Example: a motion-heavy site for a dubbing studio.</p><p class="proj-links"><a href="https://socially-blends.vercel.app" target="_blank" rel="noopener">Socially Blends ↗</a></p></div>
+          <figure class="row-shot"><img src="assets/work/socially.webp" alt="Socially Blends dubbing studio website" loading="lazy" width="1440" height="900"></figure>
+        </div>
+        <div class="row">
+          <span class="when">Dec 2025 – Jan 2026</span>
+          <div><h3>Digital forensics intern · RAIT</h3><p>Acquired and analysed disk evidence with Autopsy and FTK Imager, traced incidents to their root cause and wrote structured reports.</p></div>
+        </div>
+        <div class="row">
+          <span class="when">2025 – 2029</span>
+          <div><h3>B.Tech, Computer Engineering · Ramrao Adik Institute of Technology</h3><p>Data structures, DBMS (Oracle SQL, PL/SQL, JDBC), object-oriented programming in Java, advanced web technology.</p></div>
+        </div>
       </div>
-      <ol class="timeline" id="timeline">
-        <li class="t-item reveal">
-          <span class="t-date mono">2026 — now</span>
-          <h3>Freelance web developer</h3>
-          <p>Designing and building brand websites and web apps for businesses and creators.</p>
-        </li>
-        <li class="t-item reveal">
-          <span class="t-date mono">Dec 2025 — Jan 2026</span>
-          <h3>Digital Forensics Winter Internship · RAIT</h3>
-          <p>Four-week hands-on internship with Autopsy, FTK Imager and other forensic tools — evidence acquisition, analysis and reporting on real-world scenarios.</p>
-        </li>
-        <li class="t-item reveal">
-          <span class="t-date mono">Aug 2025 — May 2029</span>
-          <h3>B.Tech Computer Engineering · Ramrao Adik Institute of Technology</h3>
-          <p>Software development, digital forensics and leadership.</p>
-        </li>
-        <li class="t-item reveal">
-          <span class="t-date mono">Jun 2023 — Mar 2025</span>
-          <h3>ISC (12th) · SMT. Sulochanadevi Singhania School</h3>
-        </li>
-        <li class="t-item reveal">
-          <span class="t-date mono">— Mar 2023</span>
-          <h3>ICSE (10th) · Universal High School</h3>
-        </li>
-      </ol>
     </section>
 
     <!-- SKILLS -->
-    <section class="section" id="skills">
-      <div class="sec-head">
-        <span class="sec-num mono">05</span>
-        <h2 class="split">Skill constellation</h2>
-      </div>
-      <p class="dim mono small hint">hover a star — or tap on mobile</p>
-      <div class="constellation" id="constellation">
-        <canvas id="constCanvas" aria-hidden="true"></canvas>
-        <ul class="skill-list" id="skillList" aria-label="Skills">
-          <li data-g="web">HTML &amp; CSS</li><li data-g="web">JavaScript</li><li data-g="web">TypeScript</li>
-          <li data-g="web">React</li><li data-g="web">Next.js</li><li data-g="web">Node.js</li>
-          <li data-g="web">GSAP</li><li data-g="web">Canvas</li><li data-g="lang">Python</li>
-          <li data-g="lang">C / C++</li><li data-g="lang">Lua</li><li data-g="tool">Git &amp; GitHub</li>
-          <li data-g="tool">Linux</li><li data-g="tool">Vercel</li><li data-g="tool">Prisma</li>
-          <li data-g="sec">Digital forensics</li><li data-g="sec">Autopsy</li><li data-g="sec">FTK Imager</li>
-          <li data-g="cs">Data structures</li><li data-g="cs">Algorithms</li><li data-g="cs">Databases</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ARCADE -->
-    <section class="section" id="arcade">
-      <div class="sec-head">
-        <span class="sec-num mono">06</span>
-        <h2 class="split">Arcade</h2>
-      </div>
-      <div class="arcade">
-        <div class="game-frame" id="gameFrame">
-          <div class="game-bar mono">
-            <span>ASTEROID RUN</span>
-            <span>SCORE <b id="grScore">0</b></span>
-            <span>BEST <b id="grBest">0</b></span>
-          </div>
-          <canvas id="game" width="720" height="440" aria-label="Asteroid Run mini game"></canvas>
-          <div class="game-overlay" id="gameOverlay">
-            <h3>Asteroid Run</h3>
-            <p class="mono small">Move: mouse / touch / ← →&nbsp;·&nbsp;Fire: click / tap / space<br>Dodge the rocks. Grab the <span class="gem">◆</span> crystals.</p>
-            <button class="btn btn-primary" id="gameStart">Launch ▸</button>
-          </div>
-        </div>
-        <a class="invaders-card tilt" href="space-invaders/">
-          <svg class="invader-art" viewBox="0 0 11 8" width="110" height="80" aria-hidden="true"><path class="fa" d="M2 0h1v1h-1zM8 0h1v1h-1zM3 1h1v1h-1zM7 1h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM0 4h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM0 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM0 6h1v1h-1zM2 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM3 7h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1zM7 7h1v1h-1z"/><path class="fb" d="M2 0h1v1h-1zM8 0h1v1h-1zM0 1h1v1h-1zM3 1h1v1h-1zM7 1h1v1h-1zM10 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM0 3h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM10 3h1v1h-1zM0 4h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM1 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM9 5h1v1h-1zM2 6h1v1h-1zM8 6h1v1h-1zM1 7h1v1h-1zM9 7h1v1h-1z"/></svg>
-          <h3>Space Invaders</h3>
-          <p>The full arcade remake: marching waves, bunkers, a mystery UFO and your best score saved on this device.</p>
-          <span class="btn btn-ghost">Insert coin ▸</span>
-        </a>
+    <section class="sec" id="skills">
+      <div class="sec-head"><span class="sec-no">04</span><h2>Skills, with proof</h2></div>
+      <div class="skills">
+        <div><h3>Python</h3><p>ML pipeline, CLI tools, FastAPI service</p><a href="#work">PDFShield · KrishiSetu</a></div>
+        <div><h3>SQL</h3><p>PostgreSQL, Oracle SQL, PL/SQL, JDBC</p><a href="#work">KrishiSetu · DBMS labs</a></div>
+        <div><h3>React</h3><p>React 19, Next.js, TypeScript</p><a href="#apps">FORGE · KrishiSetu</a></div>
+        <div><h3>Java</h3><p>OOP, multithreading, Swing, profiling</p><a href="#experience">Coursework and labs</a></div>
+        <div><h3>Machine learning</h3><p>Feature engineering, evaluation on held-out data</p><a href="#work">PDFShield</a></div>
+        <div><h3>Testing</h3><p>Unit and integration tests, CI, test-case design</p><a href="#work">PDFShield · KrishiSetu</a></div>
+        <div><h3>Statistics</h3><p>Out-of-sample, walk-forward, bootstrap</p><a href="#work">Quantum Forge</a></div>
+        <div><h3>Delivery</h3><p>Git, Docker, Linux, Vercel, GitHub Actions</p><a href="#work">All projects</a></div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="section contact" id="contact">
-      <p class="mono dim"><span class="sec-num">07</span> · transmission</p>
-      <h2 class="contact-title reveal">Got <span class="swap" id="swap">a site in mind</span><br><span class="launch">Let's launch it.</span></h2>
-      <p class="contact-sub reveal">Websites, apps, automations that do the boring work for you. If it runs on code, I'm in.</p>
-      <a href="mailto:purvalsingh@yahoo.com" class="contact-mail magnetic">purvalsingh@yahoo.com</a>
-      <div class="socials mono">
-        <a href="https://github.com/purvalsingh" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/purval-singh-052724332/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="https://leetcode.com/u/purvalsingh/" target="_blank" rel="noopener">LeetCode ↗</a>
+    <section class="contact" id="contact">
+      <div class="contact-red">
+        <span class="sec-no">05</span>
+        <h2>Let's talk.</h2>
+        <p>Open to software engineering internships in 2026. I reply within a day.</p>
+      </div>
+      <div class="contact-main">
+        <button class="big-mail copy" type="button" data-copy="purvalsingh@yahoo.com">purvalsingh@yahoo.com <small>click to copy</small></button>
+        <div class="contact-links">
+          <a href="assets/Purval_Singh_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a>
+          <a href="https://github.com/purvalsingh" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/purval-singh-052724332" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer mono">
-    <span>© <span id="year">2026</span> Purval Singh</span>
-    <span class="dim">hand-built · no templates · no engines</span>
-    <a href="#top">back to orbit ↑</a>
+  <footer class="foot">
+    <span>© 2026 Purval Singh · Mumbai</span>
+    <span>Set in Archivo on a 12-column grid · press <kbd>G</kbd> to see it</span>
+    <button type="button" class="egg" id="eggBtn">Bored? Play Asteroid Run</button>
   </footer>
 
-  <script src="space.js?v=20261126d"></script>
+  <dialog class="game" id="gameDialog" aria-label="Asteroid Run mini game">
+    <div class="game-bar"><span>Asteroid Run · score <b id="grScore">0</b> · best <b id="grBest">0</b></span><button type="button" id="gameClose" aria-label="Close game">×</button></div>
+    <div class="game-wrap">
+      <canvas id="game" width="720" height="440"></canvas>
+      <div class="game-overlay" id="gameOverlay"><h3>Asteroid Run</h3><p>Move with mouse, touch or ← →. Fire with click, tap or space.</p><button type="button" id="gameStart" class="btn-red">Launch</button></div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="swiss.js?v=1"></script>
   <script src="asteroid-run.js"></script>
 </body>
 </html>

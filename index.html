@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="space.css?v=20261126b">
+  <link rel="stylesheet" href="space.css?v=20261126d">
 </head>
 <body>
   <canvas id="stars" aria-hidden="true"></canvas>
@@ -161,18 +161,21 @@
       </div>
 
       <div class="missions" id="missionGrid">
-        <article class="mission tilt feature" data-k="lab">
-          <div class="qf-copy">
-            <div class="m-top mono"><span>M-01</span><span class="m-status">● lab</span></div>
-            <h3>Quantum Forge</h3>
-            <p class="qf-hook">Most backtesters ask <em>"what did this return?"</em><br>This one asks <strong>"what would make this result fake?"</strong></p>
-            <p>A desktop backtesting terminal. Describe a strategy in plain English, watch it trade bar by bar, then every run faces 13 statistical gates, the same ones that have judged 33,000+ strategies. Pass 12 of 13 and it's still rejected: the 13th explains why.</p>
-            <div class="tags mono"><span>TypeScript</span><span>Electron</span><span>Statistics</span></div>
-          </div>
-          <div class="qf-console mono" aria-label="Example run: a strategy passes 12 gates and fails the luck gate">
-            <div class="qf-head"><span class="qf-dot"></span>validation run · 13 gates</div>
-            <ol class="qf-gates"><li style="--i:0"><span class="g-n">01</span><span class="g-name">sample size</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:1"><span class="g-n">02</span><span class="g-name">out-of-sample</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:2"><span class="g-n">03</span><span class="g-name">walk-forward</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:3"><span class="g-n">04</span><span class="g-name">placebo</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:4"><span class="g-n">05</span><span class="g-name">mirror</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:5"><span class="g-n">06</span><span class="g-name">neighbour</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:6" class="fail"><span class="g-n">07</span><span class="g-name">luck</span><span class="g-dots"></span><span class="g-res">FAIL</span></li><li style="--i:7"><span class="g-n">08</span><span class="g-name">decay</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:8"><span class="g-n">09</span><span class="g-name">cost stress</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:9"><span class="g-n">10</span><span class="g-name">monte carlo</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:10"><span class="g-n">11</span><span class="g-name">bootstrap</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:11"><span class="g-n">12</span><span class="g-name">too-good</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:12"><span class="g-n">13</span><span class="g-name">cross-engine</span><span class="g-dots"></span><span class="g-res">PASS</span></li></ol>
-            <div class="qf-verdict"><span>verdict</span><b>REJECTED</b><em>profit came from 5 lucky trades</em></div>
+        <article class="mission tilt flip" data-k="lab">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="m-top mono"><span>M-01</span><span class="m-status">● lab</span></div>
+              <h3>Quantum Forge</h3>
+              <p>Desktop backtesting terminal that asks <em class="qf-q">"what would make this result fake?"</em> Describe a strategy in plain English, watch it trade bar by bar, then face 13 statistical gates that have judged 33,000+ strategies.</p>
+              <div class="tags mono"><span>TypeScript</span><span>Electron</span><span>Statistics</span></div>
+              <div class="m-links"><button class="flip-btn" type="button" aria-expanded="false">See the 13 gates ↻</button></div>
+            </div>
+            <div class="flip-face flip-back mono" aria-hidden="true">
+              <div class="qf-head"><span class="qf-dot"></span>validation run · 13 gates</div>
+              <ol class="qf-gates"><li style="--i:0"><span class="g-n">01</span><span class="g-name">sample size</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:1"><span class="g-n">02</span><span class="g-name">out-of-sample</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:2"><span class="g-n">03</span><span class="g-name">walk-forward</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:3"><span class="g-n">04</span><span class="g-name">placebo</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:4"><span class="g-n">05</span><span class="g-name">mirror</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:5"><span class="g-n">06</span><span class="g-name">neighbour</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:6" class="fail"><span class="g-n">07</span><span class="g-name">luck</span><span class="g-dots"></span><span class="g-res">FAIL</span></li><li style="--i:7"><span class="g-n">08</span><span class="g-name">decay</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:8"><span class="g-n">09</span><span class="g-name">cost stress</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:9"><span class="g-n">10</span><span class="g-name">monte carlo</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:10"><span class="g-n">11</span><span class="g-name">bootstrap</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:11"><span class="g-n">12</span><span class="g-name">too-good</span><span class="g-dots"></span><span class="g-res">PASS</span></li><li style="--i:12"><span class="g-n">13</span><span class="g-name">cross-engine</span><span class="g-dots"></span><span class="g-res">PASS</span></li></ol>
+              <div class="qf-verdict"><span>verdict</span><b>REJECTED</b><em>5 lucky trades</em></div>
+              <button class="flip-btn" type="button">↺ Back</button>
+            </div>
           </div>
         </article>
 
@@ -358,7 +361,7 @@
     <a href="#top">back to orbit ↑</a>
   </footer>
 
-  <script src="space.js?v=20261126b"></script>
+  <script src="space.js?v=20261126d"></script>
   <script src="asteroid-run.js"></script>
 </body>
 </html>

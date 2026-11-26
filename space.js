@@ -299,3 +299,14 @@
     });
   }
 })();
+
+// Quantum Forge flip card
+document.querySelectorAll('.mission.flip').forEach(card => {
+  const front = card.querySelector('.flip-front'), back = card.querySelector('.flip-back');
+  card.querySelectorAll('.flip-btn').forEach(btn => btn.addEventListener('click', () => {
+    const on = card.classList.toggle('flipped');
+    front.setAttribute('aria-hidden', on); back.setAttribute('aria-hidden', !on);
+    card.querySelector('.flip-front .flip-btn').setAttribute('aria-expanded', on);
+    setTimeout(() => (on ? back : front).querySelector('.flip-btn').focus({ preventScroll: true }), 340);
+  }));
+});

@@ -311,11 +311,32 @@ body.ready .hero-title .line > span { transform: none; }
 .mission:hover { border-color: rgba(94,242,255,.45); }
 .mission:hover::after { transform: scale(1.6); }
 .mission.out { display: none; }
-.mission.feature { grid-column: span 2; }
-.gates { list-style: none; padding: 0; margin: .2rem 0 .3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(8.6rem, 1fr)); gap: .4rem; }
-.gates li { font-size: .7rem; padding: .35rem .55rem; border: 1px solid var(--line); border-radius: 8px; color: #cfd6f5; display: flex; gap: .45rem; align-items: center; position: relative; z-index: 1; cursor: help; transition: border-color .2s, color .2s; }
-.gates li b { color: var(--cyan); font-weight: 600; }
-.gates li:hover { border-color: rgba(94,242,255,.55); color: #fff; }
+.mission.feature { grid-column: span 2; display: grid; grid-template-columns: 1.05fr 1fr; gap: 1.6rem; align-items: stretch; }
+.qf-copy { display: flex; flex-direction: column; gap: .8rem; }
+.mission .qf-copy p { flex: none; }
+.qf-copy .tags { margin-top: auto; }
+.qf-hook { font-family: var(--display); font-size: 1.12rem !important; line-height: 1.45; color: var(--text) !important; }
+.qf-hook em { color: var(--dim); font-style: normal; }
+.qf-hook strong { color: var(--cyan); font-weight: 600; }
+.qf-console { position: relative; z-index: 1; background: rgba(3,5,14,.72); border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1rem; font-size: .72rem; display: flex; flex-direction: column; gap: .55rem; box-shadow: inset 0 0 40px rgba(94,242,255,.04); }
+.qf-head { color: var(--dim); display: flex; align-items: center; gap: .5rem; letter-spacing: .06em; text-transform: uppercase; font-size: .64rem; padding-bottom: .5rem; border-bottom: 1px dashed var(--line); }
+.qf-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 8px var(--ok); animation: qfBlink 1.6s infinite; }
+.qf-gates { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .18rem; }
+.qf-gates li { display: flex; align-items: baseline; gap: .55rem; color: #c9d1f2; opacity: .25; animation: qfRow 9s infinite; animation-delay: calc(var(--i) * .32s); }
+.g-n { color: var(--violet); }
+.g-dots { flex: 1; border-bottom: 1px dotted rgba(160,180,255,.22); transform: translateY(-3px); }
+.g-res { color: var(--ok); font-weight: 600; letter-spacing: .05em; }
+.qf-gates li.fail { color: #ffd0d0; }
+.qf-gates li.fail .g-res { color: #ff6b81; text-shadow: 0 0 10px rgba(255,107,129,.7); }
+.qf-gates li.fail .g-n { color: #ff6b81; }
+.qf-verdict { margin-top: auto; padding-top: .55rem; border-top: 1px dashed var(--line); display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .6rem; animation: qfVerdict 9s infinite; }
+.qf-verdict span { color: var(--dim); text-transform: uppercase; font-size: .62rem; letter-spacing: .08em; }
+.qf-verdict b { color: #ff6b81; letter-spacing: .12em; }
+.qf-verdict em { color: var(--dim); font-style: normal; }
+@keyframes qfRow { 0% { opacity: .25; } 4%, 92% { opacity: 1; } 100% { opacity: .25; } }
+@keyframes qfVerdict { 0%, 48% { opacity: 0; } 54%, 92% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes qfBlink { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .qf-gates li, .qf-verdict, .qf-dot { animation: none; opacity: 1; } }
 .m-top { display: flex; justify-content: space-between; font-size: .72rem; color: var(--dim); }
 .m-status { color: var(--amber); }
 .m-status.live { color: var(--ok); }
@@ -452,7 +473,7 @@ body.warp #stars { filter: brightness(1.6); }
 }
 @media (max-width: 560px) {
   .services, .missions { grid-template-columns: 1fr; }
-  .mission.feature { grid-column: auto; }
+  .mission.feature { grid-column: auto; grid-template-columns: 1fr; }
   .hero-title { font-size: clamp(2.9rem, 15vw, 4rem); }
   .orbit-tag.t3, .scroll-hint { display: none; }
   .hud { display: none; }
@@ -469,3 +490,4 @@ body.warp #stars { filter: brightness(1.6); }
   .reveal, .split .w > span, .hero-title .line > span { opacity: 1; transform: none; }
   .brief-text .bw { opacity: 1; }
 }
+@media (max-width: 760px) { .mission.feature { grid-template-columns: 1fr; } }
